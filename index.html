@@ -305,11 +305,12 @@
   .card-actions {
     margin-top: auto;
     display: flex;
+    flex-direction: column;
     gap: 8px;
   }
 
   .btn {
-    flex: 1;
+    width: 100%;
     text-align: center;
     padding: 10px 12px;
     border-radius: 3px;
@@ -404,11 +405,10 @@
       genero: "Poesía",
       resenaCorta: "Prosa poética sobre un burrito y su andar por Moguer, tan breve como entrañable.",
       resenaCompleta: "Prosa poética sobre un burrito y su andar por Moguer, tan breve como entrañable. Jiménez construye un retrato íntimo de la vida cotidiana andaluza que se lee casi como un poema en prosa, capítulo a capítulo.",
-      estado: "gratis",
       imagen: "PLATERO Y YO.jpg",
       color: "#4b6b52",
-      link: "https://drive.google.com/file/d/1oProjOUYtUYLm0Kjc1sZPacTdvcjSq_C/view"
-    },
+      edicionEs: { estado: "gratis", link: "https://drive.google.com/file/d/1oProjOUYtUYLm0Kjc1sZPacTdvcjSq_C/view" },
+      edicionEs: { estado: "gratis", link: "https://drive.google.com/file/d/1oProjOUYtUYLm0Kjc1sZPacTdvcjSq_C/view" },
     {
       titulo: "Rayuela",
       autor: "Julio Cortázar",
@@ -418,17 +418,17 @@
       estado: "gratis",
       imagen: "RAYUELA. J.C.jpg",
       color: "#6e2a34",
-      link: "https://drive.google.com/file/d/1AEqvoCeoqJ0JaRQZx2F_CwDQ3x9dMD0L/view"
-    },
+      edicionEs: { estado: "comprar", link: "https://drive.google.com/file/d/1AEqvoCeoqJ0JaRQZx2F_CwDQ3x9dMD0L/view"},
+      edicionEn: { estado: "comprar", link: "https://drive.google.com/file/d/1AEqvoCeoqJ0JaRQZx2F_CwDQ3x9dMD0L/view"},
     {
       titulo: "El ingenioso hidalgo Don Quijote de la Mancha",
       autor: "Miguel de Cervantes",
       genero: "Novela",
       resenaCorta: "El clásico fundacional de la novela moderna, con más humor del que recuerdas del colegio.",
       resenaCompleta: "El clásico fundacional de la novela moderna, con más humor del que recuerdas del colegio. La relación entre Quijote y Sancho sostiene una crítica social que sigue vigente cuatro siglos después.",
-      estado: "gratis",
       color: "#a87c3f",
-      link: "#"
+      edicionEs: { estado: "gratis", link: "#" },
+      edicionEn: { estado: "gratis", link: "#" }
     },
     {
       titulo: "Ficciones",
@@ -436,9 +436,9 @@
       genero: "Cuento",
       resenaCorta: "Cuentos breves que caben en la palma de la mano y no dejan de crecer en la cabeza.",
       resenaCompleta: "Cuentos breves que caben en la palma de la mano y no dejan de crecer en la cabeza. Borges construye laberintos, bibliotecas infinitas y espejos que cuestionan qué es real dentro del propio relato.",
-      estado: "comprar",
       color: "#384339",
-      link: "#"
+      edicionEs: { estado: "comprar", link: "#" },
+      edicionEn: { estado: "comprar", link: "#" }
     },
     {
       titulo: "Leyendas",
@@ -446,9 +446,8 @@
       genero: "Cuento",
       resenaCorta: "Relatos breves de misterio y romanticismo español, ideales para leer de a uno por noche.",
       resenaCompleta: "Relatos breves de misterio y romanticismo español, ideales para leer de a uno por noche. Bécquer mezcla folclore, atmósferas góticas y una prosa cuidada que envejeció muy bien.",
-      estado: "gratis",
       color: "#8a6530",
-      link: "#"
+      edicionEs: { estado: "gratis", link: "#" }
     },
     {
       titulo: "Cien años de soledad",
@@ -456,9 +455,9 @@
       genero: "Novela",
       resenaCorta: "La historia de los Buendía y Macondo, el libro que le dio nombre al realismo mágico.",
       resenaCompleta: "La historia de los Buendía y Macondo, el libro que le dio nombre al realismo mágico. Siete generaciones, un pueblo que nace y se disuelve, y una prosa que hace sentir normal lo imposible.",
-      estado: "comprar",
       color: "#571f27",
-      link: "#"
+      edicionEs: { estado: "comprar", link: "#" },
+      edicionEn: { estado: "comprar", link: "#" }
     }
   ];
 
