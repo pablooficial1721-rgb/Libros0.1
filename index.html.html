@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estantería — recomendaciones de lectura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2b24;
+    --ink-soft: #3a4a41;
+    --paper: #eee6d3;
+    --paper-card: #e3d8be;
+    --paper-line: #cabd9c;
+    --brass: #a87c3f;
+    --brass-deep: #8a6530;
+    --moss: #4b6b52;
+    --moss-deep: #395240;
+    --burgundy: #6e2a34;
+    --burgundy-deep: #571f27;
+    --surface: var(--paper);
+    --surface-card: var(--paper-card);
+    --line: var(--paper-line);
+    --text: var(--ink);
+    --text-soft: var(--ink-soft);
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --ink: #ece3cf;
+      --ink-soft: #c9beA4;
+      --paper: #17211b;
+      --paper-card: #202c24;
+      --paper-line: #384339;
+      --brass: #c99a52;
+      --brass-deep: #e0b06a;
+      --moss: #7ea187;
+      --moss-deep: #99bda1;
+      --burgundy: #b3616d;
+      --burgundy-deep: #cb818b;
+      --surface: var(--paper);
+      --surface-card: var(--paper-card);
+      --line: var(--paper-line);
+      --text: var(--ink);
+      --text-soft: var(--ink-soft);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink: #ece3cf;
+    --ink-soft: #c9beA4;
+    --paper: #17211b;
+    --paper-card: #202c24;
+    --paper-line: #384339;
+    --brass: #c99a52;
+    --brass-deep: #e0b06a;
+    --moss: #7ea187;
+    --moss-deep: #99bda1;
+    --burgundy: #b3616d;
+    --burgundy-deep: #cb818b;
+    --surface: var(--paper);
+    --surface-card: var(--paper-card);
+    --line: var(--paper-line);
+    --text: var(--ink);
+    --text-soft: var(--ink-soft);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--text);
+    font-family: 'Work Sans', -apple-system, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Hero ---------- */
+
+  header.hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 56px;
+    align-items: end;
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+    line-height: 1.12;
+    margin: 0 0 20px;
+    max-width: 15ch;
+  }
+
+  .hero p {
+    max-width: 46ch;
+    color: var(--text-soft);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .hero-mark {
+    font-family: 'Newsreader', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    margin: 0 0 28px;
+  }
+
+  .featured {
+    border-left: 3px solid var(--brass);
+    padding-left: 22px;
+  }
+
+  .featured-tag {
+    font-size: 0.8rem;
+    color: var(--brass-deep);
+    margin: 0 0 10px;
+  }
+
+  .featured-title {
+    font-family: 'Newsreader', serif;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+
+  .featured-author {
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    margin: 0 0 12px;
+  }
+
+  .featured-quote {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-soft);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ---------- Controls ---------- */
+
+  .controls {
+    padding: 36px 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 220px;
+    max-width: 380px;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 11px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface-card);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+  }
+
+  .search-box input:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 2px;
+  }
+
+  .search-box input::placeholder { color: var(--text-soft); }
+
+  .genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .genre-pill {
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--text-soft);
+    padding: 7px 15px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-family: 'Work Sans', sans-serif;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+
+  .genre-pill:hover { border-color: var(--brass); color: var(--text); }
+
+  .genre-pill.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .genre-pill:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+
+  /* ---------- Grid ---------- */
+
+  .grid {
+    padding: 12px 0 90px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 26px;
+  }
+
+  .card {
+    background: var(--surface-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .cover {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+  }
+
+  .cover-genre {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.75);
+    align-self: flex-start;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+
+  .cover-title {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.22;
+    color: #fdf9ee;
+  }
+
+  .cover-author {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.72);
+    margin-top: 6px;
+  }
+
+  .card-body {
+    padding: 18px 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .review {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    margin: 0;
+  }
+
+  .review-full { display: none; }
+  .review.expanded .review-short { display: none; }
+  .review.expanded .review-full { display: inline; }
+
+  .review-toggle {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--brass-deep);
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    align-self: flex-start;
+  }
+
+  .card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: block;
+  }
+
+  .btn-free {
+    background: var(--moss);
+    color: #fdf9ee;
+  }
+  .btn-free:hover { background: var(--moss-deep); }
+
+  .btn-buy {
+    background: transparent;
+    border-color: var(--burgundy);
+    color: var(--burgundy-deep);
+  }
+  .btn-buy:hover { background: var(--burgundy); color: #fdf9ee; }
+
+  .btn:focus-visible { outline: 2px solid var(--brass); outline-offset: 2px; }
+
+  .empty {
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-soft);
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+    font-size: 0.82rem;
+    color: var(--text-soft);
+  }
+
+  @media (max-width: 720px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+    header.hero { padding: 48px 0 40px; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .search-box { max-width: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-mark">Estantería — reseñas y recomendaciones</p>
+        <h1>Libros que vale la pena abrir</h1>
+        <p>Un catálogo con reseña propia de cada título. Si el libro está en dominio público, se lee o descarga directo aquí; si no, el enlace lleva a comprarlo.</p>
+      </div>
+      <div class="featured" id="featured-slot"></div>
+    </div>
+  </header>
+
+  <section class="controls">
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Buscar por título o autor…" aria-label="Buscar libro">
+    </div>
+    <div class="genres" id="genres" role="group" aria-label="Filtrar por género"></div>
+  </section>
+
+  <section class="grid" id="grid"></section>
+
+  <footer>
+    <div class="wrap" style="padding:0;">Estantería — catálogo de ejemplo. Reemplaza los libros, reseñas y enlaces en el arreglo <code>BOOKS</code> del código.</div>
+  </footer>
+</div>
+
+<script>
+  // Reemplaza estos datos con tu propio catálogo.
+  // estado: "gratis"  -> botón "Leer / descargar", debe apuntar a una fuente legal y de dominio público
+  // estado: "comprar" -> botón "Comprar", debe apuntar a la tienda o editorial
+  const BOOKS = [
+    {
+      titulo: "Platero y yo",
+      autor: "Juan Ramón Jiménez",
+      genero: "Poesía",
+      resenaCorta: "Prosa poética sobre un burrito y su andar por Moguer, tan breve como entrañable.",
+      resenaCompleta: "Prosa poética sobre un burrito y su andar por Moguer, tan breve como entrañable. Jiménez construye un retrato íntimo de la vida cotidiana andaluza que se lee casi como un poema en prosa, capítulo a capítulo.",
+      estado: "gratis",
+      color: "#4b6b52",
+      link: "#"
+    },
+    {
+      titulo: "Rayuela",
+      autor: "Julio Cortázar",
+      genero: "Novela",
+      resenaCorta: "Una novela que se puede leer en dos órdenes distintos — la estructura es tan importante como la historia.",
+      resenaCompleta: "Una novela que se puede leer en dos órdenes distintos — la estructura es tan importante como la historia. Cortázar rompe la linealidad narrativa y convierte al lector en cómplice activo del montaje del libro.",
+      estado: "comprar",
+      color: "#6e2a34",
+      link: "#"
+    },
+    {
+      titulo: "El ingenioso hidalgo Don Quijote de la Mancha",
+      autor: "Miguel de Cervantes",
+      genero: "Novela",
+      resenaCorta: "El clásico fundacional de la novela moderna, con más humor del que recuerdas del colegio.",
+      resenaCompleta: "El clásico fundacional de la novela moderna, con más humor del que recuerdas del colegio. La relación entre Quijote y Sancho sostiene una crítica social que sigue vigente cuatro siglos después.",
+      estado: "gratis",
+      color: "#a87c3f",
+      link: "#"
+    },
+    {
+      titulo: "Ficciones",
+      autor: "Jorge Luis Borges",
+      genero: "Cuento",
+      resenaCorta: "Cuentos breves que caben en la palma de la mano y no dejan de crecer en la cabeza.",
+      resenaCompleta: "Cuentos breves que caben en la palma de la mano y no dejan de crecer en la cabeza. Borges construye laberintos, bibliotecas infinitas y espejos que cuestionan qué es real dentro del propio relato.",
+      estado: "comprar",
+      color: "#384339",
+      link: "#"
+    },
+    {
+      titulo: "Leyendas",
+      autor: "Gustavo Adolfo Bécquer",
+      genero: "Cuento",
+      resenaCorta: "Relatos breves de misterio y romanticismo español, ideales para leer de a uno por noche.",
+      resenaCompleta: "Relatos breves de misterio y romanticismo español, ideales para leer de a uno por noche. Bécquer mezcla folclore, atmósferas góticas y una prosa cuidada que envejeció muy bien.",
+      estado: "gratis",
+      color: "#8a6530",
+      link: "#"
+    },
+    {
+      titulo: "Cien años de soledad",
+      autor: "Gabriel García Márquez",
+      genero: "Novela",
+      resenaCorta: "La historia de los Buendía y Macondo, el libro que le dio nombre al realismo mágico.",
+      resenaCompleta: "La historia de los Buendía y Macondo, el libro que le dio nombre al realismo mágico. Siete generaciones, un pueblo que nace y se disuelve, y una prosa que hace sentir normal lo imposible.",
+      estado: "comprar",
+      color: "#571f27",
+      link: "#"
+    }
+  ];
+
+  const grid = document.getElementById('grid');
+  const genresBar = document.getElementById('genres');
+  const searchInput = document.getElementById('search');
+  const featuredSlot = document.getElementById('featured-slot');
+
+  let activeGenre = 'Todos';
+  let query = '';
+
+  function renderFeatured() {
+    const f = BOOKS[0];
+    featuredSlot.innerHTML = `
+      <p class="featured-tag">Recomendado esta semana</p>
+      <p class="featured-title">${f.titulo}</p>
+      <p class="featured-author">${f.autor}</p>
+      <p class="featured-quote">"${f.resenaCorta}"</p>
+    `;
+  }
+
+  function renderGenres() {
+    const genres = ['Todos', ...new Set(BOOKS.map(b => b.genero))];
+    genresBar.innerHTML = genres.map(g =>
+      `<button class="genre-pill${g === activeGenre ? ' active' : ''}" data-genre="${g}">${g}</button>`
+    ).join('');
+    genresBar.querySelectorAll('.genre-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeGenre = btn.dataset.genre;
+        renderGenres();
+        renderGrid();
+      });
+    });
+  }
+
+  function renderGrid() {
+    const filtered = BOOKS.filter(b => {
+      const matchesGenre = activeGenre === 'Todos' || b.genero === activeGenre;
+      const q = query.trim().toLowerCase();
+      const matchesQuery = !q || b.titulo.toLowerCase().includes(q) || b.autor.toLowerCase().includes(q);
+      return matchesGenre && matchesQuery;
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<div class="empty" style="grid-column:1/-1;">No hay libros que coincidan con esa búsqueda.</div>`;
+      return;
+    }
+
+    grid.innerHTML = filtered.map((b, i) => `
+      <article class="card">
+        <div class="cover" style="background:${b.color};">
+          <span class="cover-genre">${b.genero}</span>
+          <div>
+            <div class="cover-title">${b.titulo}</div>
+            <div class="cover-author">${b.autor}</div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="review" id="review-${i}">
+            <span class="review-short">${b.resenaCorta}</span>
+            <span class="review-full">${b.resenaCompleta}</span>
+          </p>
+          <button class="review-toggle" data-target="review-${i}">Leer reseña completa</button>
+          <div class="card-actions">
+            ${b.estado === 'gratis'
+              ? `<a class="btn btn-free" href="${b.link}" target="_blank" rel="noopener">Leer / descargar</a>`
+              : `<a class="btn btn-buy" href="${b.link}" target="_blank" rel="noopener">Comprar</a>`}
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    grid.querySelectorAll('.review-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const review = document.getElementById(btn.dataset.target);
+        const expanded = review.classList.toggle('expanded');
+        btn.textContent = expanded ? 'Ver menos' : 'Leer reseña completa';
+      });
+    });
+  }
+
+  searchInput.addEventListener('input', (e) => {
+    query = e.target.value;
+    renderGrid();
+  });
+
+  renderFeatured();
+  renderGenres();
+  renderGrid();
+</script>
+
+</body>
+</html>
