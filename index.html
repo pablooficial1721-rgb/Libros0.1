@@ -522,7 +522,6 @@
           </p>
           <button class="review-toggle" data-target="review-${i}">Leer reseña completa</button>
           <div class="card-actions">
-            ${b.estado === 'gratis'
               ${b.edicionEs ? `<a class="btn ${b.edicionEs.estado === 'gratis' ? 'btn-free' : 'btn-buy'}" href="${b.edicionEs.link}" target="_blank" rel="noopener">${b.edicionEs.estado === 'gratis' ? 'Leer / descargar (ES)' : 'Comprar (ES)'}</a>` : ''}
               ${b.edicionEn ? `<a class="btn ${b.edicionEn.estado === 'gratis' ? 'btn-free' : 'btn-buy'}" href="${b.edicionEn.link}" target="_blank" rel="noopener">${b.edicionEn.estado === 'gratis' ? 'Read / download (EN)' : 'Buy (EN)'}</a>` : ''}
           </div>
