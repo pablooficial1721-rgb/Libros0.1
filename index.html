@@ -405,8 +405,9 @@
       resenaCorta: "Prosa poética sobre un burrito y su andar por Moguer, tan breve como entrañable.",
       resenaCompleta: "Prosa poética sobre un burrito y su andar por Moguer, tan breve como entrañable. Jiménez construye un retrato íntimo de la vida cotidiana andaluza que se lee casi como un poema en prosa, capítulo a capítulo.",
       estado: "gratis",
+      imagen: "PLATERO_Y_YO",
       color: "#4b6b52",
-      link: "#"
+      link: "https://drive.google.com/file/d/1oProjOUYtUYLm0Kjc1sZPacTdvcjSq_C/view"
     },
     {
       titulo: "Rayuela",
@@ -507,7 +508,7 @@
 
     grid.innerHTML = filtered.map((b, i) => `
       <article class="card">
-        <div class="cover" style="background:${b.color};">
+        <div class="cover" style="background:${b.imagen ? `linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55)), url('${b.imagen}') center/cover no-repeat` : b.color};">
           <span class="cover-genre">${b.genero}</span>
           <div>
             <div class="cover-title">${b.titulo}</div>
